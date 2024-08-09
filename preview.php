@@ -58,11 +58,9 @@ if (!$file || !$fileCategory) {
             <img src="logo.png" alt="Company Logo" class="footer-logo">
         </div>
         <div class="footer-center">
-            <button id="reportButton" class="footer-button">Report a Problem</button>
             <p>&copy; 2024 FileMeUp. All rights reserved.</p>
         </div>
         <div class="footer-right">
-            <i class="fa fa-github" style="font-size:40px"></i>
             <div>
                 <a href="https://github.com/KaloyanYonov">Kaloyan Yonov</a>
                 <br>
