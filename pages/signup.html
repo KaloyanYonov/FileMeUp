@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In - FileMeUp</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel = "stylesheet" href = "loginSignup.css">
+    <title>Sign Up - FileMeUp</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel = "stylesheet" href = "../css/loginSignup.css">
 
 </head>
 
@@ -17,20 +17,22 @@
             <a href="signup.html"><button>Sign Up</button></a>
         </nav>
     </header>
-    <h1>Log In</h1>
+    <h1>Sign Up</h1>
     <main>
-        <form action="login.php" method="post">
+        <form action="signup.php" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-            <button type="submit">Log In</button>
+            <button type="submit">Sign Up</button>
         </form>
     </main>
 
     <footer>
         <div class="footer-left">
-            <img src="logo.png" alt="Company Logo" class="footer-logo">
+            <img src="../images/logo.png" alt="Company Logo" class="footer-logo">
         </div>
         <div class="footer-center">
             <p>&copy; 2024 FileMeUp. All rights reserved.</p>
