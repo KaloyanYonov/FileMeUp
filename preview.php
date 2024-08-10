@@ -9,7 +9,8 @@ $supportedFileTypes = [
     'document' => ['pdf']
 ];
 
-function getFileTypeCategory($fileType, $supportedFileTypes) {
+function getFileTypeCategory($fileType, $supportedFileTypes)
+{
     foreach ($supportedFileTypes as $category => $types) {
         if (in_array($fileType, $types)) {
             return $category;
@@ -28,13 +29,21 @@ if (!$file || !$fileCategory) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filemeup - Preview File</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+    <header class="header-box">
+        <nav>
+            <a href="login.html"><button>Log In</button></a>
+            <a href="signup.html"><button>Sign Up</button></a>
+        </nav>
+    </header>
     <h1>File Preview</h1>
     <?php if ($fileCategory == 'image'): ?>
         <img src="<?= htmlspecialchars($file) ?>" alt="Image" style="max-width: 100%;">
@@ -69,4 +78,5 @@ if (!$file || !$fileCategory) {
         </div>
     </footer>
 </body>
+
 </html>
