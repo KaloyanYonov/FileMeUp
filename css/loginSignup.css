@@ -1,5 +1,10 @@
 form {
     position: relative;
+    background: linear-gradient(45deg, #72d4f8, #fada96);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 100px auto; 
 }
 
 label {
@@ -22,7 +27,7 @@ input[type="email"] {
 button {
     margin: 10px 5px;
     padding: 10px 20px;
-    background-color: #3fe0c5;
+    background-color: #44c1f6;
     color: white;
     border: none;
     cursor: pointer;
@@ -30,5 +35,7 @@ button {
 }
 
 button:hover {
-    background-color: #3fb1c5;
+    background-color: #42ddc3;
 }
+
+

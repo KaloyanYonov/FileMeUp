@@ -40,8 +40,8 @@ if (!$file || !$fileCategory) {
 <body>
     <header class="header-box">
         <nav>
-            <a href="login.html"><button>Log In</button></a>
-            <a href="signup.html"><button>Sign Up</button></a>
+            <a href="../pages/login.html"><button>Log In</button></a>
+            <a href="../pages/signup.html"><button>Sign Up</button></a>
         </nav>
     </header>
     <h1>File Preview</h1>

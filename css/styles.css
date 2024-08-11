@@ -10,10 +10,10 @@ body {
 .header-box {
     width: 100%;
     background-color: #4ab5cd;
-    padding: 20px;
+    padding: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -27,7 +27,7 @@ main {
     margin: 120px auto 0 auto;
     padding: 60px;
     max-width: 500px;
-    background-color: white;
+    background: linear-gradient(45deg, #a7e7e8, #f5e7c8);
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -73,14 +73,13 @@ button:hover {
 
 footer {
     position: relative;
-    width: 100%;
-    background-color: #4876f3;
+    background-color: #57aef5;
     padding: 0.7rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 10;
-    margin-top: 100px;
+    margin-top : 100px;
 }
 
 nav {
