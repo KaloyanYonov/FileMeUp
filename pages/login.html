@@ -13,18 +13,24 @@
 <body>
     <header class="header-box">
         <nav>
-            <a href = "index.html"><button class = "mainPage">Main</button></a>
-            <a href="login.html"><button>Log In</button></a>
-            <a href="signup.html"><button>Sign Up</button></a>
+            <div class="nav-left">
+                <a href="index.html"><button class="mainPage">Main</button></a>
+            </div>
+            <div class="nav-right">
+                <a href="login.html"><button>Log In</button></a>
+                <a href="signup.html"><button>Sign Up</button></a>
+            </div>
         </nav>
     </header>
     <main>
-        <form action="login.php" method="post">
+        <h2>Log In</h2>
+        <form action="../php/login.php" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <button type="submit">Log In</button>
+            <h4>Don't have an account? <a href = "signup.html">Sign up</a></h4>
         </form>
     </main>
 
@@ -36,9 +42,9 @@
             <p>&copy; 2024 FileMeUp. All rights reserved.</p>
         </div>
         <div class="footer-right">
-            <div>
+            <div class="footer-links">
                 <a href="https://github.com/KaloyanYonov">Kaloyan Yonov</a>
-                <br>
+                <br/>
                 <a href="https://github.com/Backpulver">Yoan Hristov</a>
             </div>
         </div>
