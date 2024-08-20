@@ -3,10 +3,10 @@ $file = isset($_GET['file']) ? $_GET['file'] : null;
 $type = isset($_GET['type']) ? $_GET['type'] : null;
 
 $supportedFileTypes = [
-    'image' => ['jpg', 'jpeg', 'png', 'gif'],
+    'image' => ['jpg', 'jpeg', 'png'],
     'audio' => ['mp3', 'wav'],
     'video' => ['mp4', 'webm'],
-    'document' => ['pdf']
+    'document' => ['pdf', 'docx']
 ];
 
 function getFileTypeCategory($fileType, $supportedFileTypes)
