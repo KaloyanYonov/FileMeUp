@@ -25,6 +25,17 @@ CREATE TABLE IF NOT EXISTS Files (
     CONSTRAINT fk_uploader FOREIGN KEY (uploader_id) REFERENCES Users(user_id) ON DELETE SET NULL
 );
 
+CREATE TABLE IF NOT EXISTS File_Shares (
+    file_share_id INT PRIMARY KEY AUTO_INCREMENT,
+    file_id INT NOT NULL,
+    shared_with INT NOT NULL,
+    permissions ENUM('read', 'write') DEFAULT 'read',
+    shared_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_file FOREIGN KEY (file_id) REFERENCES Files(file_id) ON DELETE CASCADE,
+    CONSTRAINT fk_shared_with FOREIGN KEY (shared_with) REFERENCES Users(user_id) ON DELETE CASCADE,
+    UNIQUE (file_id, shared_with)
+);
+
 INSERT INTO Users (username, email, password_hash, created_at)
 VALUES ('root', 'root@example.com', SHA1('azis'), NOW());
 
