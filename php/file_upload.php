@@ -38,7 +38,7 @@ $current_mime_type = $finfo->file($_FILES["file"]["tmp_name"]);
 $mime_types = [
     "text/html", "text/plain",
     "image/jpeg", "image/png", "image/gif", "image/bmp", "image/svg+xml", "image/webp", "image/tiff", "image/heif", "image/avif",
-    "audio/mpeg", "audio/ogg", "audio/vnd.wav",
+    "audio/mp3, audio/mpeg", "audio/ogg", "audio/vnd.wav",
     "video/mp4", "video/webm",
     "application/json", "application/xml", "application/pdf", "application/javascript", "application/zip", "application/vnd.ms-excel", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 ];
