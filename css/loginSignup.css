@@ -1,11 +1,20 @@
 form {
     position: relative;
+    background: linear-gradient(70deg, #4c8cc0,#ffffff);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 50px auto; 
 }
 
 label {
     display: block;
     margin-bottom: 10px;
     color: #333;
+}
+
+h2 {
+    margin : 0;
 }
 
 input[type="text"],
@@ -17,18 +26,4 @@ input[type="email"] {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-}
-
-button {
-    margin: 10px 5px;
-    padding: 10px 20px;
-    background-color: #3fe0c5;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #3fb1c5;
 }
