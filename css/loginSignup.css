@@ -5,12 +5,21 @@ form {
     border-radius: 10px;
     max-width: 400px;
     margin: 50px auto; 
+    background: linear-gradient(70deg, #4c8cc0,#ffffff);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 50px auto; 
 }
 
 label {
     display: block;
     margin-bottom: 10px;
     color: #333;
+}
+
+h2 {
+    margin : 0;
 }
 
 h2 {
@@ -27,3 +36,6 @@ input[type="email"] {
     border-radius: 5px;
     box-sizing: border-box;
 }
+
+
+
