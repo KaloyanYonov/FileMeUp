@@ -3,10 +3,10 @@ $file = isset($_GET['file']) ? $_GET['file'] : null;
 $type = isset($_GET['type']) ? $_GET['type'] : null;
 
 $supportedFileTypes = [
-    'image' => ['jpg', 'jpeg', 'png', 'gif'],
+    'image' => ['jpg', 'jpeg', 'png'],
     'audio' => ['mp3', 'wav'],
     'video' => ['mp4', 'webm'],
-    'document' => ['pdf']
+    'document' => ['pdf', 'docx']
 ];
 
 function getFileTypeCategory($fileType, $supportedFileTypes)
@@ -40,8 +40,8 @@ if (!$file || !$fileCategory) {
 <body>
     <header class="header-box">
         <nav>
-            <a href="login.html"><button>Log In</button></a>
-            <a href="signup.html"><button>Sign Up</button></a>
+            <a href="../pages/login.html"><button>Log In</button></a>
+            <a href="../pages/signup.html"><button>Sign Up</button></a>
         </nav>
     </header>
     <h1>File Preview</h1>
