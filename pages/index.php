@@ -32,7 +32,7 @@ if (!isset($_SESSION['userId'])) {
 
     <main>
         <h2 class="welcome-text">Get started. Upload your files!</h2>
-        <form action="../php/file_management/file_preview.php" method="post" enctype="multipart/form-data">
+        <form action="../php/file_management/file_upload.php" method="post" enctype="multipart/form-data">
             <label for="files">Choose files:</label>
             <input type="file" id="files" name="files[]" multiple required>
             <button type="submit">Upload</button>
