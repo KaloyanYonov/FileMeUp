@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+include 'db_connection.php';
 
 $pdo = getDbInstance();
 

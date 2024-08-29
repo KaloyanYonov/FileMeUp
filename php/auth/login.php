@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+include 'db_connection.php';
 
 $pdo = getDbInstance();
 
@@ -16,7 +16,7 @@ $user = $stmt->fetch();
 if ($user && password_verify($password, $user['password_hash'])) {
     $_SESSION['userId'] = $user['user_id'];
     $_SESSION['username'] = $user['username'];
-    header("Location: ../pages/main.php");
+    header("Location: ../pages/index.php");
 } else {
     echo "Invalid username or password.";
 }

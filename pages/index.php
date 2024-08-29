@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FileMeUp</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -20,8 +20,8 @@ session_start();
             <div class="nav-right">
                 <?php if (isset($_SESSION['userId'])): ?>
                     <span>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
-                    <a href="myfiles.php"><button>My Files</button></a>
-                    <a href="../php/logout.php"><button>Logout</button></a>
+                    <a href="my_files.php"><button>My Files</button></a>
+                    <a href="../php/auth/logout.php"><button>Logout</button></a>
                 <?php else: ?>
                     <a href="login.html"><button>Log In</button></a>
                     <a href="signup.html"><button>Sign Up</button></a>
@@ -29,9 +29,10 @@ session_start();
             </div>
         </nav>
     </header>
+    
     <main>
         <h2 class="welcome-text">Get started. Upload a file!</h2>
-        <form action="../php/preview.php" method="post" enctype="multipart/form-data">
+        <form action="../php/file_management/file_preview.php" method="post" enctype="multipart/form-data">
             <label for="file">Choose a file:</label>
             <input type="file" id="file" name="file" required>
             <button type="submit">Upload</button>

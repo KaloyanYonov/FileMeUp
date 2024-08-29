@@ -2,8 +2,8 @@
 function getDbInstance() {
     $host = 'localhost';
     $dbname = 'FileMeUp_db';
-    $username = 'root'; // Modify with your actual username
-    $password = ''; // Modify with your actual password
+    $username = 'root';
+    $password = '';
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

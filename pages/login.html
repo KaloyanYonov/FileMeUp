@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In - FileMeUp</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel = "stylesheet" href = "../css/loginSignup.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel = "stylesheet" href = "../css/auth.css">
 
 </head>
 
@@ -14,7 +14,7 @@
     <header class="header-box">
         <nav>
             <div class="nav-left">
-                <a href="index.html"><button class="mainPage">Main</button></a>
+                <a href="index.php"><button class="mainPage">Main</button></a>
             </div>
             <div class="nav-right">
                 <a href="login.html"><button>Log In</button></a>
@@ -22,15 +22,16 @@
             </div>
         </nav>
     </header>
+    
     <main>
         <h2>Log In</h2>
-        <form action="../php/login.php" method="post">
+        <form action="../php/auth/login.php" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <button type="submit">Log In</button>
-            <h4>Don't have an account? <a href = "signup.html">Sign up</a></h4>
+            <h4>Don't have an account? <a href="signup.html">Sign up</a></h4>
         </form>
     </main>
 

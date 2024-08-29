@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['userId'])) {
-    header('Location: login.html'); // Redirect if not logged in
+    header('Location: login.html');
     exit();
 }
 
@@ -10,12 +10,14 @@ $files = scandir($uploads_dir);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Files</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <header class="header-box">
         <nav>
@@ -23,11 +25,12 @@ $files = scandir($uploads_dir);
                 <a href="index.php"><button class="mainPage">Main</button></a>
             </div>
             <div class="nav-right">
-                <a href="myfiles.php"><button>My Files</button></a>
-                <a href="logout.php"><button>Logout</button></a>
+                <a href="my_files.php"><button>My Files</button></a> <!-- Change to home? -->
+                <a href="../php/auth/logout.php"><button>Logout</button></a>
             </div>
         </nav>
     </header>
+
     <main>
         <h1>Your Uploaded Files</h1>
         <?php if (count($files) > 2): // More than '.' and '..' ?>
@@ -43,7 +46,8 @@ $files = scandir($uploads_dir);
                 <tbody>
                     <?php
                     foreach ($files as $file) {
-                        if ($file === "." || $file === "..") continue;
+                        if ($file === "." || $file === "..")
+                            continue;
                         $filePath = $uploads_dir . DIRECTORY_SEPARATOR . $file;
                         $fileSize = filesize($filePath);
                         $fileDate = date("F d Y H:i:s.", filemtime($filePath));
@@ -52,7 +56,7 @@ $files = scandir($uploads_dir);
                             <td><?= htmlspecialchars($file) ?></td>
                             <td><?= number_format($fileSize / 1024, 2) ?> KB</td>
                             <td><?= $fileDate ?></td>
-                            <td><a href="../php/file_preview.php?filename=<?= urlencode($file) ?>">Preview</a></td>
+                            <td><a href="../php/file_management/file_preview.php?filename=<?= urlencode($file) ?>">Preview</a></td>
                         </tr>
                         <?php
                     }
@@ -63,6 +67,7 @@ $files = scandir($uploads_dir);
             <p>No files uploaded yet.</p>
         <?php endif; ?>
     </main>
+    
     <footer>
         <div class="footer-left">
             <img src="../images/logo.png" alt="Company Logo" class="footer-logo">
@@ -76,4 +81,5 @@ $files = scandir($uploads_dir);
         </div>
     </footer>
 </body>
+
 </html>

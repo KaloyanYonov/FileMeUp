@@ -79,5 +79,5 @@ if (!move_uploaded_file($_FILES["file"]["tmp_name"], $destination)) {
 }
 
 // After successful upload, redirect to the preview page with the file name
-header("Location: ../php/file_preview.php?filename=" . urlencode($filename));
+header("Location: ../php/file_management/file_preview.php?filename=" . urlencode($filename));
 exit();
