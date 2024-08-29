@@ -22,7 +22,7 @@ $files = scandir($uploads_dir);
     <header class="header-box">
         <nav>
             <div class="nav-left">
-                <a href="index.php"><button class="mainPage">Main</button></a>
+                <a href="index.php"><button class="mainPage">Home</button></a>
             </div>
             <div class="nav-right">
                 <a href="my_files.php"><button>My Files</button></a> <!-- Change to home? -->

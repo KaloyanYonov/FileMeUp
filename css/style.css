@@ -140,7 +140,7 @@ footer p {
 }
 
 .footer-left img {
-    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
 }
 
 .footer-right img{

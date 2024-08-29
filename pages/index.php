@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['userId'])) {
+    header("Location: login.html");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,26 +20,21 @@ session_start();
     <header class="header-box">
         <nav>
             <div class="nav-left">
-                <a href="index.php"><button class="mainPage">Main</button></a>
+                <a href="index.php"><button class="mainPage">Home</button></a>
+                <span>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
             </div>
             <div class="nav-right">
-                <?php if (isset($_SESSION['userId'])): ?>
-                    <span>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
-                    <a href="my_files.php"><button>My Files</button></a>
-                    <a href="../php/auth/logout.php"><button>Logout</button></a>
-                <?php else: ?>
-                    <a href="login.html"><button>Log In</button></a>
-                    <a href="signup.html"><button>Sign Up</button></a>
-                <?php endif; ?>
+                <a href="my_files.php"><button>My Files</button></a>
+                <a href="../php/auth/logout.php"><button>Logout</button></a>
             </div>
         </nav>
     </header>
-    
+
     <main>
-        <h2 class="welcome-text">Get started. Upload a file!</h2>
+        <h2 class="welcome-text">Get started. Upload your files!</h2>
         <form action="../php/file_management/file_preview.php" method="post" enctype="multipart/form-data">
-            <label for="file">Choose a file:</label>
-            <input type="file" id="file" name="file" required>
+            <label for="files">Choose files:</label>
+            <input type="file" id="files" name="files[]" multiple required>
             <button type="submit">Upload</button>
         </form>
     </main>
