@@ -66,26 +66,22 @@ if (!is_dir($uploads_dir)) {
                             continue;
 
                         $filePath = $uploads_dir . DIRECTORY_SEPARATOR . $file;
-                        $fileUrl = "../uploads/" . urlencode($uploader_id . DIRECTORY_SEPARATOR . $file); // URL path for download
+                        $fileUrl = "../uploads/" . urlencode($uploader_id . DIRECTORY_SEPARATOR . $file);
                         $fileSize = filesize($filePath);
                         $fileDate = date("F d Y H:i:s.", filemtime($filePath));
 
-                        // Determine MIME type and extract subtype
                         $finfo = new finfo(FILEINFO_MIME_TYPE);
                         $mime_type = $finfo->file($filePath);
-                        $subtype = explode('/', $mime_type)[1]; // Extract subtype (e.g., "png" from "image/png")
+                        $subtype = explode('/', $mime_type)[1];
                         
-                        // Determine thumbnail path
                         $thumbnailPath = "../images/thumbnails/" . $subtype . ".png";
                         if (!file_exists($thumbnailPath)) {
                             $thumbnailPath = "../images/thumbnails/default.png";
                         }
 
-                        // Generate checksum
                         $checksum = sha1_file($filePath);
 
-                        // Example: Assuming files are public by default for demonstration
-                        $is_public = true; // Change this based on your logic
+                        $is_public = true;
                         ?>
                         <tr>
                             <td><img src="<?= htmlspecialchars($thumbnailPath) ?>" alt="Thumbnail" style="width: 50px; height: 50px;"></td>

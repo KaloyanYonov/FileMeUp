@@ -14,24 +14,20 @@ if (!isset($_SESSION['userId'])) {
 $uploader_id = $_SESSION['userId'];
 $user_uploads_dir = __DIR__ . '/../../uploads/' . $uploader_id;
 
-// Check if the root uploads directory is writable
 $uploads_root_dir = __DIR__ . '/../../uploads/';
 if (!is_writable($uploads_root_dir)) {
     exit("Uploads root directory is not writable");
 }
 
-// Create the user-specific directory if it doesn't exist
 if (!is_dir($user_uploads_dir)) {
     if (!mkdir($user_uploads_dir, 0777, true)) {
         exit("Failed to create user's upload directory");
     }
 }
 
-// Database connection
 require_once __DIR__ . '/../auth/db_connection.php';
-$conn = getDbInstance();  // Get the PDO instance from db_connection.php
+$conn = getDbInstance();
 
-// Debugging: Check if the connection was established
 if (!$conn) {
     die("Database connection not established.");
 }
@@ -67,7 +63,6 @@ foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name) {
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     $current_mime_type = $finfo->file($tmp_name);
 
-    // Define allowed MIME types
     $mime_types = [
         "text/html", "text/plain",
         "image/jpeg", "image/png", "image/gif", "image/bmp", "image/svg+xml", "image/webp", "image/tiff", "image/heif", "image/avif",
@@ -76,7 +71,6 @@ foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name) {
         "application/json", "application/xml", "application/pdf", "application/javascript", "application/zip", "application/vnd.ms-excel", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     ];
 
-    // Check if the file type is allowed
     if (!in_array($current_mime_type, $mime_types)) {
         exit('File type not allowed');
     }
@@ -85,17 +79,14 @@ foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name) {
     $pathinfo = pathinfo($_FILES["files"]["name"][$key]);
     $base = preg_replace("/[^\\w-]/", "_", $pathinfo["filename"]);
 
-    // Set the filename with proper extension
     $filename = $base . "." . $pathinfo["extension"];
 
     if (!is_writable($user_uploads_dir)) {
         exit("User's upload directory is not writable");
     }
 
-    // Destination path
     $destination = $user_uploads_dir . DIRECTORY_SEPARATOR . $filename;
 
-    // Add suffix if file exists
     $i = 1;
     while (file_exists($destination)) {
         $filename = $base . "($i)." . $pathinfo["extension"];
@@ -103,34 +94,26 @@ foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name) {
         $i++;
     }
 
-    // Move uploaded file to the user's upload directory
     if (!move_uploaded_file($tmp_name, $destination)) {
         exit("Can't move uploaded file");
     }
 
-    // Calculate file checksum (SHA1)
     $checksum = sha1_file($destination);
 
-    // Get the file size
     $file_size = $_FILES["files"]["size"][$key];
 
-    // Determine the thumbnail path based on the MIME type
     $thumbnail_dir = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . "thumbnails";
     $mime_type_parts = explode('/', $current_mime_type);
     $thumbnail_path = $thumbnail_dir . DIRECTORY_SEPARATOR . $mime_type_parts[1] . ".png";
 
-    // Check if the thumbnail exists; if not, set to NULL
     if (!file_exists($thumbnail_path)) {
         $thumbnail_path = NULL;
     } else {
-        // Convert the absolute path to a relative path for storage in the database
         $thumbnail_path = str_replace(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR, '', $thumbnail_path);
     }
 
-    // Default visibility is private (is_public = FALSE)
     $is_public = 0;
 
-    // Save file details to the database
     $stmt = $conn->prepare("INSERT INTO Files (uploader_id, file_name, file_path, mime_type, file_size, checksum, thumbnail, is_public) VALUES (:uploader_id, :file_name, :file_path, :mime_type, :file_size, :checksum, :thumbnail, :is_public)");
     $stmt->bindParam(':uploader_id', $uploader_id);
     $stmt->bindParam(':file_name', $filename);

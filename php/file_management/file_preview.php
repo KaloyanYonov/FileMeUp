@@ -1,23 +1,19 @@
 <?php
 
-// Get the file name from the query parameter
 if (!isset($_GET['filename'])) {
     exit('No file specified');
 }
 
-$filename = basename($_GET['filename']);  // Sanitize the input
+$filename = basename($_GET['filename']);
 
-// Define the uploads directory
 $uploads_dir = dirname(__DIR__) . DIRECTORY_SEPARATOR . "uploads";
 
-// Full path to the file
 $file_path = $uploads_dir . DIRECTORY_SEPARATOR . $filename;
 
 if (!file_exists($file_path)) {
     exit('File does not exist');
 }
 
-// Output file preview or download link based on the MIME type
 $finfo = new finfo(FILEINFO_MIME_TYPE);
 $mime_type = $finfo->file($file_path);
 
