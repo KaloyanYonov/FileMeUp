@@ -13,7 +13,7 @@ $sql = "INSERT INTO Users (username, email, password_hash) VALUES (?, ?, ?)";
 try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$username, $email, $passwordHash]);
-    header("Location: ../pages/login.html");
+    header("Location: ../../pages/login.html");
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
